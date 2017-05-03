@@ -5,7 +5,3 @@ This exercise is to showcase and use the jasmine JavaScript library to conduct J
 
 ## Usage
 Simply open the index.html in the root directory or run a web-server off your computer.
-
-You can also visit the site:
-
-https://wianb.github.io/Udacity_Testing/
