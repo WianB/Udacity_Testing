@@ -36,7 +36,9 @@ $(function() {
             for (var i = 0; i < allFeeds.length; i++) {
 
                 //The test for each URL
-                expect(allFeeds[i].url).not.toBe(null);
+                expect(allFeeds[i].url).toBeDefined();
+                expect(allFeeds[i].url.length).toBeGreaterThan(0);
+
             }
         });
 
@@ -49,7 +51,8 @@ $(function() {
             for (var i = 0; i < allFeeds.length; i++) {
 
                 //The test for all the feeds
-                expect(allFeeds[i].name).not.toBe(null);
+                expect(allFeeds[i].name).toBeDefined();
+                expect(allFeeds[i].name.length).toBeGreaterThan(0);
             }
         });
     });
@@ -102,12 +105,23 @@ $(function() {
         });
 
         it('contains an entry element in the .feed container', function() {
-            //Variable declaration
-            var entriesLink = $('.entry-link').length;
-            var entries = $('.entry').length;
 
-            //Tests
-            expect(entriesLink).toBeGreaterThan(0);
+            //Variable declaration
+            var entries = 0;
+
+            $('.feed').children('.entry-link').each(function() {
+
+                //See if it contains an .entry
+                expect($(this).children('.entry')).not.toBe(0);
+
+                //Test to see if each entry actually has content
+                expect($(this).children('.entry').length).not.toBe(0);
+
+                //For each entry increase the counter
+                entries = entries + $(this).children('.entry').length;
+            });
+
+            //Test
             expect(entries).toBeGreaterThan(0);
         });
     });
@@ -138,8 +152,8 @@ $(function() {
             feedTwo = $('.feed').html();
 
             //Check if variables are valid
-            expect(feedOne).not.toEqual(undefined);
-            expect(feedTwo).not.toEqual(undefined);
+            expect(feedOne).toBeDefined();
+            expect(feedTwo).toBeDefined();
 
             //Check if the feeds are the same
             expect(feedOne).not.toEqual(feedTwo);
