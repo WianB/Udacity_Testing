@@ -109,7 +109,6 @@ $(function() {
     allFeeds.forEach(function(feed) {
         feed.id = feedId;
         feedList.append(feedItemTemplate(feed));
-
         feedId++;
     });
 
@@ -119,7 +118,6 @@ $(function() {
      */
     feedList.on('click', 'a', function() {
         var item = $(this);
-
         $('body').addClass('menu-hidden');
         loadFeed(item.data('id'));
         return false;
