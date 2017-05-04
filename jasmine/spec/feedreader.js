@@ -106,23 +106,8 @@ $(function() {
 
         it('contains an entry element in the .feed container', function() {
 
-            //Variable declaration
-            var entries = 0;
-
-            $('.feed').children('.entry-link').each(function() {
-
-                //See if it contains an .entry
-                expect($(this).children('.entry')).not.toBe(0);
-
-                //Test to see if each entry actually has content
-                expect($(this).children('.entry').length).not.toBe(0);
-
-                //For each entry increase the counter
-                entries = entries + $(this).children('.entry').length;
-            });
-
-            //Test
-            expect(entries).toBeGreaterThan(0);
+            //Test to check if entry exists in the feed class
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
